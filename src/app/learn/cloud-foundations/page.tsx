@@ -1,17 +1,24 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Cloud computing foundations",
+  description: "Cloud computing foundations notes are being prepared.",
+  alternates: { canonical: "/learn/cloud-foundations" },
+  robots: { index: false },
+};
+
 export default function Page() {
   return (
-    <div style={{ maxWidth: "900px", margin: "0 auto", padding: "4rem 2rem" }}>
-      <Link href="/learn" style={{ fontSize: "13px", color: "#555", textDecoration: "none" }}>
-        Learn
-      </Link>
-      <span style={{ color: "#333", margin: "0 8px" }}>/</span>
-      <span style={{ fontSize: "13px", color: "#888" }}>Cloud Computing Foundations</span>
-      <h1 style={{ fontSize: "36px", fontWeight: 800, marginTop: "2rem", marginBottom: "1rem" }}>
-        <span className="grad-text">Cloud Computing Foundations</span>
-      </h1>
-      <p style={{ color: "#666", marginBottom: "2rem" }}>Modules coming soon - currently being organized into this format.</p>
-      <Link href="/learn/cloud-migration" className="btn-ghost">See Cloud Migration notes (live now)</Link>
+    <div className="wrap">
+      <div className="page-head">
+        <h1>Cloud computing foundations</h1>
+        <p className="lede">These notes are not ready yet. The cloud migration notes cover the basics in module 1.</p>
+        <div className="btn-row" style={{ marginTop: "1.6rem" }}>
+          <Link href="/learn/cloud-migration" className="btn btn-primary">Open cloud migration notes</Link>
+          <Link href="/learn" className="btn btn-ghost">Back to Learn</Link>
+        </div>
+      </div>
     </div>
   );
 }

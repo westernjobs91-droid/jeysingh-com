@@ -1,204 +1,150 @@
 import Link from "next/link";
+import Image from "next/image";
+import CommandAnatomy from "@/components/CommandAnatomy";
+import { site } from "@/lib/site";
 
-const courses = [
-  { title: "Cloud Migration", modules: 6, slug: "cloud-migration", status: "active" },
-  { title: "Cloud Computing Foundations", modules: 6, slug: "cloud-foundations", status: "active" },
-  { title: "Cloud Solutions Architecture", modules: 0, slug: "cloud-architecture", status: "coming" },
-  { title: "Cloud-native Development", modules: 0, slug: "cloud-native", status: "coming" },
-  { title: "Accessible by Design", modules: 0, slug: "accessible-design", status: "coming" },
+const work = [
+  {
+    title: "AZ-104 field labs",
+    badge: "Public repo", cls: "b-live",
+    desc: "12 workplace ticket labs and a capstone. Every lab has deploy, verify and cleanup scripts, tested live in Azure.",
+    tags: ["Azure CLI", "Bicep", "Bash"],
+    href: site.labsRepo, foot: "Open the repo on GitHub",
+  },
+  {
+    title: "SnapBooks",
+    badge: "Live product", cls: "b-live",
+    desc: "Bookkeeping for self-employed Canadians: HST tracking, a KM logbook, AI receipt scanning and CRA-ready exports.",
+    tags: ["Next.js", "Neon Postgres", "Stripe"],
+    href: "https://snapbooks.ca", foot: "Visit snapbooks.ca",
+  },
+  {
+    title: "Hirely",
+    badge: "Live product", cls: "b-live",
+    desc: "A CRM for recruiters. A Chrome extension saves contacts from LinkedIn and Gmail, and the Claude API drafts follow-ups.",
+    tags: ["TypeScript", "Supabase", "Claude API"],
+    href: "https://hirelypro.com", foot: "Visit hirelypro.com",
+  },
 ];
-
-const projects = [
-  { title: "BookHaven Online", desc: "Azure architecture case study. Service selection and design trade-offs.", tags: ["Azure", "Architecture"], status: "in-progress" },
-  { title: "Azure SQL Security", desc: "Key Vault with RBAC, Always Encrypted, advanced security configuration.", tags: ["SQL", "Key Vault", "Security"], status: "in-progress" },
-  { title: "IaC Repo with CI/CD", desc: "Bicep and Terraform provisioning VNet, VM, storage. GitHub Actions pipeline.", tags: ["Bicep", "Terraform", "CI/CD"], status: "planned" },
-  { title: "Agentic Research System", desc: "Multi-agent AI workflow with Claude, deployed on Azure with eval suite.", tags: ["LangGraph", "Claude", "Azure"], status: "planned" },
-];
-
-const certs = [
-  { code: "AZ-104", full: "Azure Administrator Associate", target: "Aug 2026", status: "active" },
-  { code: "AZ-305", full: "Azure Solutions Architect Expert", target: "Oct 2026", status: "planned" },
-  { code: "CCA-F", full: "Claude Certified Architect - Foundations", target: "Oct 2026", status: "planned" },
-];
-
-const iconMap: Record<string, string> = {
-  "Cloud Migration": "ti-arrows-right-left",
-  "Cloud Computing Foundations": "ti-cloud",
-  "Cloud Solutions Architecture": "ti-topology-star",
-  "Cloud-native Development": "ti-code",
-  "Accessible by Design": "ti-accessible",
-  "BookHaven Online": "ti-building-store",
-  "Azure SQL Security": "ti-shield-lock",
-  "IaC Repo with CI/CD": "ti-git-branch",
-  "Agentic Research System": "ti-robot",
-};
 
 export default function Home() {
   return (
-    <div style={{ maxWidth: "960px", margin: "0 auto", padding: "0 2rem" }}>
-
-      {/* Hero */}
-      <section style={{ padding: "7rem 0 5.5rem" }}>
-        <div className="pill" style={{ marginBottom: "2rem" }}>
-          <span className="pill-dot" />
-          Available for cloud roles - December 2026
-        </div>
-
-        <h1 style={{
-          fontSize: "clamp(44px, 8vw, 76px)",
-          fontWeight: 800,
-          lineHeight: 1.0,
-          letterSpacing: "-0.04em",
-          marginBottom: "1.5rem",
-          color: "#eeeaf8",
-        }}>
-          Cloud Engineer.<br />
-          <span className="grad-text">AI Builder.</span>
-        </h1>
-
-        <p style={{
-          fontSize: "17px", color: "#6b6b8a",
-          maxWidth: "500px", lineHeight: 1.75, marginBottom: "2.5rem",
-        }}>
-          Building cloud systems and agentic AI on Azure.
-          Studying at Algonquin College, Toronto.
-          Targeting AZ-104, AZ-305, and Claude Certified Architect.
-        </p>
-
-        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-          <Link href="/portfolio" className="btn-primary">View my work</Link>
-          <Link href="/learn" className="btn-ghost">Learn Azure with me</Link>
+    <>
+      <section className="hero">
+        <div className="wrap hero-grid">
+          <div>
+            <span className="status"><i aria-hidden="true" />Open to cloud roles from December 2026</span>
+            <h1>I build on Azure and write the guide I wanted when I started.</h1>
+            <p className="lede">
+              I&apos;m Jey Singh: electrical engineer, technical recruiter and cloud builder.
+              I ship cloud and AI products, and I teach Azure the way the job uses it,
+              one command at a time.
+            </p>
+            <div className="btn-row" style={{ marginTop: "2rem" }}>
+              <Link href="/books/az-104" className="btn btn-primary">See the AZ-104 Field Guide</Link>
+              <Link href="/portfolio" className="btn btn-ghost">View my work</Link>
+            </div>
+          </div>
+          <CommandAnatomy />
         </div>
       </section>
 
-      {/* Stats strip */}
-      <div style={{
-        display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
-        gap: "1px", background: "#1e1830",
-        borderRadius: "12px", overflow: "hidden",
-        marginBottom: "5rem",
-        border: "1px solid #1e1830",
-      }}>
-        {[
-          { num: "6", label: "Courses this semester" },
-          { num: "4", label: "Portfolio projects" },
-          { num: "3", label: "Certifications planned" },
-          { num: "26", label: "Week career plan" },
-        ].map(s => (
-          <div key={s.label} style={{ background: "#0e0e1a", padding: "1.25rem 1rem", textAlign: "center" }}>
-            <div style={{ fontSize: "24px", fontWeight: 800, letterSpacing: "-0.03em", background: "linear-gradient(135deg, #a78bfa, #60a5fa)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{s.num}</div>
-            <div style={{ fontSize: "11px", color: "#3a3858", marginTop: "3px" }}>{s.label}</div>
-          </div>
-        ))}
+      <div className="wrap">
+        <div className="facts">
+          <div><strong>Author</strong><span>AZ-104: The Azure Administrator Field Guide, 264 pages</span></div>
+          <div><strong>Cloud Development and Operations</strong><span>Algonquin College, finishing December 2026</span></div>
+          <div><strong>Electrical and Electronics Engineer</strong><span>B.Eng, plus Wireless Telecommunications at Humber College</span></div>
+          <div><strong>Founder</strong><span>Western Jobs, SnapBooks and Hirely</span></div>
+        </div>
       </div>
 
-      {/* Study notes */}
-      <section style={{ paddingBottom: "5rem" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "1.25rem" }}>
-          <div className="section-label">Study notes</div>
-          <Link href="/learn" style={{ fontSize: "12px", color: "#a78bfa", textDecoration: "none" }}>View all</Link>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(270px, 1fr))", gap: "10px" }}>
-          {courses.map(c => (
-            <div key={c.slug} className="card" style={{ padding: "1.1rem 1.25rem" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
-                <span style={{ fontSize: "16px", color: c.status === "active" ? "#a78bfa" : "#2a2040" }}>
-                  <i className={`ti ${iconMap[c.title] || "ti-cloud"}`} aria-hidden="true" />
-                </span>
-                <span style={{ fontSize: "13px", fontWeight: 500, color: c.status === "active" ? "#eeeaf8" : "#3a3858", letterSpacing: "-0.01em" }}>{c.title}</span>
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                {c.status === "active" ? (
-                  <Link href={`/learn/${c.slug}`} style={{ fontSize: "12px", color: "#a78bfa", textDecoration: "none" }}>
-                    Start learning
-                  </Link>
-                ) : (
-                  <span style={{ fontSize: "12px", color: "#2a2040" }}>Coming Sep 2026</span>
-                )}
-                <span style={{
-                  fontSize: "10px", padding: "2px 8px", borderRadius: "10px",
-                  background: c.status === "active" ? "#2a1f50" : "#0e0e1a",
-                  color: c.status === "active" ? "#a78bfa" : "#2a2040",
-                  border: `1px solid ${c.status === "active" ? "#3d2f6e" : "#1e1830"}`,
-                }}>
-                  {c.status === "active" ? `${c.modules} modules` : "Soon"}
-                </span>
+      <section className="section">
+        <div className="wrap">
+          <div className="book">
+            <Image className="cover" src="/books/az-104-cover.jpg" alt="Cover of AZ-104: The Azure Administrator Field Guide" width={816} height={1056} priority />
+            <div>
+              <h2>AZ-104: The Azure Administrator Field Guide</h2>
+              <p className="lede" style={{ marginTop: "1rem" }}>
+                Pass the exam, then do the job. Every skill on the official outline,
+                explained with diagrams and real commands.
+              </p>
+              <ul>
+                <li>Every command broken down in Azure CLI and PowerShell</li>
+                <li>12 workplace labs written as IT tickets, plus a capstone</li>
+                <li>156 original practice questions with explained answers</li>
+                <li>A job chapter written from the recruiter&apos;s side of the desk</li>
+              </ul>
+              <div className="btn-row">
+                <Link href="/books/az-104" className="btn btn-primary">See what&apos;s inside</Link>
+                <Link href="/books/az-104#sample" className="btn btn-ghost">Read the free sample</Link>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
-      {/* Projects */}
-      <section style={{ paddingBottom: "5rem" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "1.25rem" }}>
-          <div className="section-label">Portfolio</div>
-          <Link href="/portfolio" style={{ fontSize: "12px", color: "#a78bfa", textDecoration: "none" }}>View all</Link>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(270px, 1fr))", gap: "10px" }}>
-          {projects.map(p => (
-            <div key={p.title} className="card" style={{ padding: "1.1rem 1.25rem" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "6px" }}>
-                <span style={{ fontSize: "16px", color: p.status === "in-progress" ? "#60a5fa" : "#2a2040" }}>
-                  <i className={`ti ${iconMap[p.title] || "ti-briefcase"}`} aria-hidden="true" />
-                </span>
-                <span style={{ fontSize: "13px", fontWeight: 500, color: "#eeeaf8", letterSpacing: "-0.01em" }}>{p.title}</span>
-              </div>
-              <p style={{ fontSize: "12px", color: "#4a4860", lineHeight: 1.6, marginBottom: "10px" }}>{p.desc}</p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
-                {p.tags.map(t => (
-                  <span key={t} style={{
-                    fontSize: "10px", padding: "2px 7px", borderRadius: "8px",
-                    background: p.status === "in-progress" ? "#0e1e3d" : "#0e0e1a",
-                    color: p.status === "in-progress" ? "#60a5fa" : "#3a3858",
-                    border: `1px solid ${p.status === "in-progress" ? "#1a3060" : "#1e1830"}`,
-                  }}>{t}</span>
-                ))}
-              </div>
-            </div>
-          ))}
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="section-head">
+            <h2>Work you can open and check</h2>
+            <Link href="/portfolio">All projects</Link>
+          </div>
+          <div className="grid-3">
+            {work.map(w => (
+              <a key={w.title} href={w.href} className="card">
+                <span className={`badge ${w.cls}`}>{w.badge}</span>
+                <h3>{w.title}</h3>
+                <p>{w.desc}</p>
+                <div className="tags">{w.tags.map(t => <span key={t} className="tag">{t}</span>)}</div>
+                <span className="foot">{w.foot}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Certifications */}
-      <section style={{ paddingBottom: "6rem" }}>
-        <div className="section-label" style={{ marginBottom: "1.25rem" }}>Certifications</div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-          {certs.map(c => (
-            <div key={c.code} className="card" style={{
-              padding: "1rem 1.25rem",
-              display: "flex", alignItems: "center", justifyContent: "space-between",
-            }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-                <span style={{
-                  fontSize: "11px", fontWeight: 700, fontFamily: "monospace",
-                  padding: "4px 10px", borderRadius: "6px",
-                  background: c.status === "active" ? "#2a1f50" : "#0e0e1a",
-                  color: c.status === "active" ? "#a78bfa" : "#3a3858",
-                  border: `1px solid ${c.status === "active" ? "#3d2f6e" : "#1e1830"}`,
-                  letterSpacing: "0.05em",
-                }}>
-                  {c.code}
-                </span>
-                <div>
-                  <div style={{ fontSize: "13px", fontWeight: 500, color: "#eeeaf8", letterSpacing: "-0.01em" }}>{c.full}</div>
-                  <div style={{ fontSize: "11px", color: "#3a3858", marginTop: "1px" }}>Target: {c.target}</div>
-                </div>
-              </div>
-              <span style={{
-                fontSize: "10px", padding: "3px 10px", borderRadius: "10px",
-                background: c.status === "active" ? "#2a1f50" : "#0e0e1a",
-                color: c.status === "active" ? "#a78bfa" : "#3a3858",
-                border: `1px solid ${c.status === "active" ? "#3d2f6e" : "#1e1830"}`,
-                whiteSpace: "nowrap",
-              }}>
-                {c.status === "active" ? "Studying now" : "Planned"}
-              </span>
-            </div>
-          ))}
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="section-head">
+            <h2>Learn for free</h2>
+            <Link href="/learn">Everything in Learn</Link>
+          </div>
+          <div className="grid-3">
+            <Link href="/learn/read-azure-cli" className="card">
+              <h3>How to read any Azure CLI command</h3>
+              <p>The one sentence pattern behind every <code>az</code> command, with the PowerShell version beside it.</p>
+              <span className="foot">Read the lesson</span>
+            </Link>
+            <Link href="/books/az-104#sample" className="card">
+              <h3>AZ-104 sample chapter</h3>
+              <p>22 pages from the book: the command grammar chapter and the first workplace lab.</p>
+              <span className="foot">Get the free sample</span>
+            </Link>
+            <Link href="/learn/cloud-migration" className="card">
+              <h3>Cloud migration notes</h3>
+              <p>Six modules of plain-English notes, each with a cheat sheet and a quiz.</p>
+              <span className="foot">Start module 1</span>
+            </Link>
+          </div>
         </div>
       </section>
 
-    </div>
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap grid-2" style={{ alignItems: "center" }}>
+          <div>
+            <h2>Recruiter by trade, engineer by training</h2>
+            <p style={{ marginTop: "1rem", maxWidth: "58ch" }}>
+              I have read resumes and run interviews for years, so I know what gets a
+              cloud candidate hired. Now I am on the other side of the table, learning
+              the work properly and writing down what helps.
+            </p>
+          </div>
+          <div className="btn-row">
+            <Link href="/about" className="btn btn-ghost">More about me</Link>
+            <Link href="/contact" className="btn btn-ghost">Get in touch</Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

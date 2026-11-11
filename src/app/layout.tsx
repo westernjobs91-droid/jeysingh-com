@@ -1,14 +1,25 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Jey Singh - Cloud Engineer and AI Builder",
-  description: "Azure cloud engineering, agentic AI systems, and cloud study notes by Jey Singh.",
+  metadataBase: new URL(site.url),
+  title: {
+    default: "Jey Singh: cloud and AI builder, author of the AZ-104 Field Guide",
+    template: "%s | Jey Singh",
+  },
+  description:
+    "Jey Singh builds cloud and AI products, writes practical Azure guides, and shares free study notes and labs.",
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Jey Singh",
-    description: "Cloud Engineer and AI Builder",
-    url: "https://jeysingh.com",
+    description: "Cloud and AI builder. Author of AZ-104: The Azure Administrator Field Guide.",
+    url: site.url,
+    siteName: "Jey Singh",
+    type: "website",
+    images: ["/books/az-104-og.jpg"],
   },
 };
 
@@ -18,19 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Nav />
         <main>{children}</main>
-        <footer style={{
-          borderTop: "1px solid #1e1830",
-          padding: "2.5rem 2rem",
-          textAlign: "center",
-          marginTop: "6rem",
-        }}>
-          <p style={{ fontSize: "13px", color: "#3a3858" }}>
-            Jey Singh &middot; jeysingh.com &middot; Toronto, ON
-          </p>
-          <p style={{ fontSize: "12px", color: "#2a2040", marginTop: "4px" }}>
-            Azure Cloud Engineer in progress &middot; Algonquin College
-          </p>
-        </footer>
+        <Footer />
       </body>
     </html>
   );

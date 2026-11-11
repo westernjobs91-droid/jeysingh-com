@@ -233,18 +233,18 @@ export default function CloudMigrationPage() {
   return (
     <div style={{ maxWidth: "900px", margin: "0 auto", padding: "4rem 2rem" }}>
       <div style={{ marginBottom: "2rem" }}>
-        <Link href="/learn" style={{ fontSize: "13px", color: "#3a3858", textDecoration: "none" }}>Learn</Link>
-        <span style={{ color: "#333", margin: "0 8px" }}>/</span>
-        <span style={{ fontSize: "13px", color: "#6b6b8a" }}>Cloud Migration</span>
+        <Link href="/learn" style={{ fontSize: "13px", color: "#9d9aba", textDecoration: "none" }}>Learn</Link>
+        <span style={{ color: "#6f6c8c", margin: "0 8px" }}>/</span>
+        <span style={{ fontSize: "13px", color: "#c3c0dc" }}>Cloud Migration</span>
       </div>
 
       <div className="pill" style={{ marginBottom: "1.5rem" }}>6 modules</div>
       <h1 style={{ fontSize: "36px", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: "1rem" }}>
         <span className="grad-text">Cloud Migration</span>
       </h1>
-      <p style={{ fontSize: "15px", color: "#4a4860", marginBottom: "3rem", maxWidth: "580px", lineHeight: 1.7 }}>
+      <p style={{ fontSize: "15px", color: "#b0adc9", marginBottom: "3rem", maxWidth: "580px", lineHeight: 1.7 }}>
         Study notes covering cloud fundamentals, migration strategy, Azure App Service, and PaaS databases.
-        Each module has notes, a cheat sheet, and a quiz using real exam-style questions.
+        Each module has notes, a cheat sheet, and a quiz with exam-style questions.
       </p>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -270,7 +270,7 @@ export default function CloudMigrationPage() {
                   </span>
                   <div>
                     <div style={{ fontSize: "15px", fontWeight: 600, color: "#eeeaf8" }}>{mod.title}</div>
-                    <div style={{ fontSize: "12px", color: "#3a3858", marginTop: "2px" }}>
+                    <div style={{ fontSize: "12px", color: "#9d9aba", marginTop: "2px" }}>
                       {mod.topics.join(" · ")}
                     </div>
                   </div>
@@ -287,7 +287,7 @@ export default function CloudMigrationPage() {
                     </span>
                   )}
                   <span style={{
-                    color: "#3a3858", fontSize: "14px",
+                    color: "#9d9aba", fontSize: "14px",
                     transform: expanded === mod.id ? "rotate(180deg)" : "none",
                     transition: "transform 0.2s", display: "inline-block",
                   }}>v</span>
@@ -301,7 +301,7 @@ export default function CloudMigrationPage() {
                       <button key={tab} onClick={() => setTab(mod.id, tab)} style={{
                         padding: "10px 20px", background: "none", border: "none",
                         borderBottom: getTab(mod.id) === tab ? "2px solid #8b5cf6" : "2px solid transparent",
-                        color: getTab(mod.id) === tab ? "#a78bfa" : "#555",
+                        color: getTab(mod.id) === tab ? "#a78bfa" : "#9d9aba",
                         fontSize: "13px", fontWeight: getTab(mod.id) === tab ? 500 : 400,
                         cursor: "pointer",
                       }}>
@@ -317,7 +317,7 @@ export default function CloudMigrationPage() {
                           {mod.topics.map(t => <span key={t} className="tag">{t}</span>)}
                         </div>
                         {mod.notes.split("\n\n").map((para, i) => (
-                          <p key={i} style={{ fontSize: "14px", color: "#8888a8", lineHeight: 1.85, marginBottom: "1rem" }}>
+                          <p key={i} style={{ fontSize: "14px", color: "#c3c0dc", lineHeight: 1.85, marginBottom: "1rem" }}>
                             {para}
                           </p>
                         ))}
@@ -335,7 +335,7 @@ export default function CloudMigrationPage() {
                             <span style={{ fontSize: "12px", fontWeight: 600, color: "#a78bfa", fontFamily: "monospace" }}>
                               {item.term}
                             </span>
-                            <span style={{ fontSize: "13px", color: "#6b6b8a", lineHeight: 1.6 }}>{item.def}</span>
+                            <span style={{ fontSize: "13px", color: "#c3c0dc", lineHeight: 1.6 }}>{item.def}</span>
                           </div>
                         ))}
                       </div>
@@ -353,7 +353,7 @@ export default function CloudMigrationPage() {
                               </p>
                               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                                 {q.options.map((opt, oi) => {
-                                  let bg = "#ffffff08", border = "1px solid #222", color = "#888";
+                                  let bg = "#ffffff08", border = "1px solid #352a55", color = "#c3c0dc";
                                   if (answered) {
                                     if (oi === q.correct) { bg = "#2a1f50"; border = "1px solid #8b5cf650"; color = "#a78bfa"; }
                                     else if (oi === selected) { bg = "#1a0505"; border = "1px solid #ef444450"; color = "#f87171"; }
@@ -375,7 +375,7 @@ export default function CloudMigrationPage() {
                                 <div style={{
                                   marginTop: "10px", padding: "10px 14px",
                                   background: "#a78bfa05", borderRadius: "8px",
-                                  fontSize: "13px", color: "#4a4860", lineHeight: 1.6,
+                                  fontSize: "13px", color: "#b0adc9", lineHeight: 1.6,
                                   borderLeft: "2px solid #a78bfa",
                                 }}>
                                   {q.exp}

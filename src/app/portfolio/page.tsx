@@ -1,59 +1,80 @@
-import Link from "next/link";
+import type { Metadata } from "next";
+import { site } from "@/lib/site";
 
-const projects = [
-  { title: "BookHaven Online", subtitle: "Cloud Architecture Case Study", desc: "Reasoning through Azure service selection and design trade-offs for a real-world e-commerce scenario. Published with a 'why I made these decisions' narrative, not just a technical summary.", tags: ["Azure", "Architecture", "AZ-104"], status: "in-progress", icon: "ti-building-store" },
-  { title: "Azure SQL Security Deep-Dive", subtitle: "Lab Write-up", desc: "Azure SQL Database, Key Vault with RBAC, and Always Encrypted configuration. Advanced security material most entry-level candidates have not touched.", tags: ["Azure SQL", "Key Vault", "RBAC", "Always Encrypted"], status: "in-progress", icon: "ti-shield-lock" },
-  { title: "IaC Repo and Containerized App", subtitle: "Infrastructure as Code with CI/CD", desc: "Bicep and Terraform repo provisioning a VNet, VM, storage account, and Key Vault on Azure. Containerized app deployed through a GitHub Actions CI/CD pipeline.", tags: ["Bicep", "Terraform", "Docker", "GitHub Actions"], status: "planned", icon: "ti-git-branch" },
-  { title: "Agentic Research System on Azure", subtitle: "Multi-agent AI on Azure", desc: "Multi-agent research workflow using LangGraph with Claude as the LLM backbone, deployed on Azure with a Blob retrieval tool layer and a real eval suite.", tags: ["LangGraph", "Claude", "Azure", "RAG", "Eval"], status: "planned", icon: "ti-robot" },
+export const metadata: Metadata = {
+  title: "Portfolio",
+  description: "Products, repos and cloud projects by Jey Singh: the AZ-104 field labs, SnapBooks, Hirely and Azure work in progress.",
+  alternates: { canonical: "/portfolio" },
+};
+
+const shipped = [
+  {
+    title: "AZ-104 field labs", kind: "Public GitHub repo",
+    desc: "12 workplace ticket labs and a capstone for Azure administrators. Each lab has deploy, verify and cleanup scripts. All of them were run end to end in a live subscription in November 2026.",
+    tags: ["Azure CLI", "Bicep", "Bash", "RBAC", "Networking", "Backup"],
+    href: site.labsRepo, foot: "Open the repo",
+  },
+  {
+    title: "AZ-104: The Azure Administrator Field Guide", kind: "Published book",
+    desc: "A 264-page study guide I wrote, tested and published. It covers every AZ-104 domain in Azure CLI and PowerShell, with 156 original practice questions.",
+    tags: ["Azure", "Technical writing", "PowerShell"],
+    href: "/books/az-104", foot: "See the book",
+  },
+  {
+    title: "SnapBooks", kind: "Live product",
+    desc: "Bookkeeping software for self-employed Canadians. I built the full product: HST tracking, a KM logbook, the T2125 vehicle deduction, invoicing, AI receipt scanning and CRA-ready exports.",
+    tags: ["Next.js", "Tailwind CSS", "Clerk", "Neon Postgres", "Stripe"],
+    href: "https://snapbooks.ca", foot: "Visit snapbooks.ca",
+  },
+  {
+    title: "Hirely", kind: "Live product",
+    desc: "A CRM built for recruiters. I built it solo: the web app, a Chrome extension that saves contacts from LinkedIn and Gmail in one click, billing, and follow-ups drafted with the Claude API.",
+    tags: ["Next.js", "TypeScript", "Supabase", "Chrome extension", "Claude API"],
+    href: "https://hirelypro.com", foot: "Visit hirelypro.com",
+  },
 ];
 
-export default function PortfolioPage() {
-  return (
-    <div style={{ maxWidth: "860px", margin: "0 auto", padding: "4rem 2rem" }}>
-      <div className="pill" style={{ marginBottom: "1.5rem" }}><span className="pill-dot" />4 projects</div>
-      <h1 style={{ fontSize: "42px", fontWeight: 800, letterSpacing: "-0.04em", marginBottom: "1rem", lineHeight: 1.05 }}>
-        <span className="grad-text">Portfolio</span>
-      </h1>
-      <p style={{ fontSize: "16px", color: "#6b6b8a", maxWidth: "520px", lineHeight: 1.75, marginBottom: "3.5rem" }}>
-        Cloud and AI projects built during the program. Each one is designed to show real engineering decisions, not just that the lab ran.
-      </p>
+const building = [
+  { title: "BookHaven Online", status: "In progress", cls: "b-prog", desc: "An Azure architecture case study for an online bookstore: which services I chose and why.", tags: ["Azure", "Architecture"] },
+  { title: "Azure SQL security deep-dive", status: "In progress", cls: "b-prog", desc: "Azure SQL Database with Key Vault, RBAC and Always Encrypted, written up as a lab.", tags: ["Azure SQL", "Key Vault", "RBAC"] },
+  { title: "Infrastructure as code repo", status: "Planned", cls: "b-soon", desc: "Bicep and Terraform for a VNet, VM, storage account and Key Vault, deployed by a GitHub Actions pipeline.", tags: ["Bicep", "Terraform", "GitHub Actions"] },
+  { title: "Agentic research system on Azure", status: "Planned", cls: "b-soon", desc: "A multi-agent research workflow with LangGraph and Claude, deployed on Azure with an evaluation suite.", tags: ["LangGraph", "Claude", "Azure"] },
+];
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-        {projects.map(p => (
-          <div key={p.title} className="card" style={{ padding: "1.6rem" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "12px", flexWrap: "wrap", gap: "8px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                <span style={{
-                  width: "36px", height: "36px", borderRadius: "8px",
-                  background: p.status === "in-progress" ? "#0e1e3d" : "#0e0e1a",
-                  border: `1px solid ${p.status === "in-progress" ? "#1a3060" : "#1e1830"}`,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: "17px", color: p.status === "in-progress" ? "#60a5fa" : "#2a2040",
-                  flexShrink: 0,
-                }}>
-                  <i className={`ti ${p.icon}`} aria-hidden="true" />
-                </span>
-                <div>
-                  <h2 style={{ fontSize: "16px", fontWeight: 700, color: "#eeeaf8", letterSpacing: "-0.02em", marginBottom: "1px" }}>{p.title}</h2>
-                  <span style={{ fontSize: "11px", color: "#3a3858" }}>{p.subtitle}</span>
-                </div>
-              </div>
-              <span style={{
-                fontSize: "10px", padding: "4px 11px", borderRadius: "10px", whiteSpace: "nowrap",
-                background: p.status === "in-progress" ? "#0e1e3d" : "#0e0e1a",
-                color: p.status === "in-progress" ? "#60a5fa" : "#3a3858",
-                border: `1px solid ${p.status === "in-progress" ? "#1a3060" : "#1e1830"}`,
-              }}>
-                {p.status === "in-progress" ? "In progress" : "Planned"}
-              </span>
-            </div>
-            <p style={{ fontSize: "14px", color: "#6b6b8a", lineHeight: 1.7, marginBottom: "1rem" }}>{p.desc}</p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
-              {p.tags.map(t => <span key={t} className="tag" style={{ fontSize: "11px" }}>{t}</span>)}
-            </div>
-          </div>
+export default function Portfolio() {
+  return (
+    <div className="wrap">
+      <div className="page-head">
+        <h1>Portfolio</h1>
+        <p className="lede">Finished work first. Everything in the top section is live, and you can open it and check it yourself.</p>
+      </div>
+
+      <div className="grid-2">
+        {shipped.map(p => (
+          <a key={p.title} href={p.href} className="card">
+            <span className="badge b-live">{p.kind}</span>
+            <h3>{p.title}</h3>
+            <p>{p.desc}</p>
+            <div className="tags">{p.tags.map(t => <span key={t} className="tag">{t}</span>)}</div>
+            <span className="foot">{p.foot}</span>
+          </a>
         ))}
       </div>
+
+      <section className="section">
+        <h2 style={{ marginBottom: "0.6rem" }}>Cloud projects in progress</h2>
+        <p className="note" style={{ marginBottom: "1.5rem" }}>These are not finished. Each one gets a write-up and a repo link here when it is.</p>
+        <div className="grid-2">
+          {building.map(p => (
+            <div key={p.title} className="card">
+              <span className={`badge ${p.cls}`}>{p.status}</span>
+              <h3>{p.title}</h3>
+              <p>{p.desc}</p>
+              <div className="tags">{p.tags.map(t => <span key={t} className="tag">{t}</span>)}</div>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

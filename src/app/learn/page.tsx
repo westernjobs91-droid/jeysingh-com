@@ -1,66 +1,70 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { az104, site } from "@/lib/site";
 
-const courses = [
-  { title: "Cloud Migration", desc: "Migration strategies, Azure App Service, PaaS databases, and the 4 Rs.", slug: "cloud-migration", modules: 6, status: "active", icon: "ti-arrows-right-left", tags: ["4 Rs", "App Service", "MySQL"] },
-  { title: "Cloud Computing Foundations", desc: "Service models, deployment models, cloud providers, and adoption strategy.", slug: "cloud-foundations", modules: 6, status: "active", icon: "ti-cloud", tags: ["IaaS", "PaaS", "SaaS", "CAF"] },
-  { title: "Cloud Solutions Architecture", desc: "Designing cloud solutions on Azure. Architecture patterns and trade-offs.", slug: "cloud-architecture", modules: 0, status: "coming", icon: "ti-topology-star", tags: ["AZ-305", "Architecture"] },
-  { title: "Accessible by Design", desc: "Building accessible digital products. WCAG standards and inclusive design.", slug: "accessible-design", modules: 0, status: "coming", icon: "ti-accessible", tags: ["WCAG", "UX"] },
-  { title: "Cloud-native Development", desc: "Full-stack development on cloud infrastructure. Containers and modern APIs.", slug: "cloud-native", modules: 0, status: "coming", icon: "ti-code", tags: ["Docker", "APIs"] },
-  { title: "Real-Time Data and Applications", desc: "Working with real-time data streams and remote data in the cloud.", slug: "realtime-data", modules: 0, status: "coming", icon: "ti-wave-sine", tags: ["Streaming", "Real-time"] },
-  { title: "Agentic AI", desc: "Multi-agent systems, tool use, RAG, eval frameworks. Andrew Ng and Hugging Face Agents courses.", slug: "agentic-ai", modules: 0, status: "coming", icon: "ti-robot", tags: ["LangGraph", "Claude", "RAG"] },
+export const metadata: Metadata = {
+  title: "Learn cloud and AI for free",
+  description: "Free Azure lessons, study notes with quizzes, a sample chapter and hands-on labs from Jey Singh.",
+  alternates: { canonical: "/learn" },
+};
+
+const soon = [
+  { title: "AZ-104 practice quiz", desc: "A short set of original questions for each exam domain, with explained answers." },
+  { title: "Git and GitHub for job seekers", desc: "The Git habits teams expect, and how to make your GitHub profile prove them." },
+  { title: "Cloud computing foundations", desc: "Service models, deployment models and adoption strategy, in the same notes, cheat sheet and quiz format." },
+  { title: "Cloud solutions architecture", desc: "Design patterns and trade-offs on Azure, written while I prepare for AZ-305." },
+  { title: "Cloud-native development", desc: "Containers, APIs and serverless apps on Azure." },
+  { title: "Agentic AI notes", desc: "Reflection, tool use, planning and multi-agent patterns, with small working examples." },
 ];
 
-export default function LearnPage() {
-  const active = courses.filter(c => c.status === "active");
-  const coming = courses.filter(c => c.status === "coming");
+export default function Learn() {
   return (
-    <div style={{ maxWidth: "960px", margin: "0 auto", padding: "4rem 2rem" }}>
-      <div className="pill" style={{ marginBottom: "1.5rem" }}><span className="pill-dot" />Study notes</div>
-      <h1 style={{ fontSize: "42px", fontWeight: 800, letterSpacing: "-0.04em", marginBottom: "1rem", color: "#eeeaf8", lineHeight: 1.05 }}>
-        Learn <span className="grad-text">cloud and AI</span>
-      </h1>
-      <p style={{ fontSize: "16px", color: "#6b6b8a", maxWidth: "520px", lineHeight: 1.75, marginBottom: "3.5rem" }}>
-        Personal study notes rewritten in plain English, with cheat sheets and quizzes for every module. No course codes, no jargon walls.
-      </p>
-
-      <div className="section-label">Available now</div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(290px, 1fr))", gap: "10px", marginBottom: "3rem" }}>
-        {active.map(c => (
-          <Link key={c.slug} href={`/learn/${c.slug}`} style={{ textDecoration: "none" }}>
-            <div className="card" style={{ padding: "1.4rem", cursor: "pointer", height: "100%" }}>
-              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "10px" }}>
-                <span style={{ fontSize: "20px", color: "#a78bfa" }}>
-                  <i className={`ti ${c.icon}`} aria-hidden="true" />
-                </span>
-                <span style={{ fontSize: "10px", padding: "2px 8px", borderRadius: "10px", background: "#2a1f50", color: "#a78bfa", border: "1px solid #3d2f6e" }}>
-                  {c.modules} modules
-                </span>
-              </div>
-              <div style={{ fontSize: "14px", fontWeight: 600, color: "#eeeaf8", marginBottom: "6px", letterSpacing: "-0.02em" }}>{c.title}</div>
-              <p style={{ fontSize: "12px", color: "#4a4860", lineHeight: 1.6, marginBottom: "12px" }}>{c.desc}</p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
-                {c.tags.map(t => <span key={t} className="tag" style={{ fontSize: "10px" }}>{t}</span>)}
-              </div>
-            </div>
-          </Link>
-        ))}
+    <div className="wrap">
+      <div className="page-head">
+        <h1>Learn</h1>
+        <p className="lede">Free lessons, notes and labs. Everything here is written in my own words, in plain English.</p>
       </div>
 
-      <div className="section-label">Coming September 2026</div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(290px, 1fr))", gap: "10px" }}>
-        {coming.map(c => (
-          <div key={c.slug} className="card" style={{ padding: "1.4rem", opacity: 0.45 }}>
-            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "10px" }}>
-              <span style={{ fontSize: "20px", color: "#2a2040" }}>
-                <i className={`ti ${c.icon}`} aria-hidden="true" />
-              </span>
-              <span style={{ fontSize: "10px", padding: "2px 8px", borderRadius: "10px", background: "#0e0e1a", color: "#2a2040", border: "1px solid #1e1830" }}>Soon</span>
-            </div>
-            <div style={{ fontSize: "14px", fontWeight: 600, color: "#4a4860", marginBottom: "6px", letterSpacing: "-0.02em" }}>{c.title}</div>
-            <p style={{ fontSize: "12px", color: "#2a2040", lineHeight: 1.6 }}>{c.desc}</p>
-          </div>
-        ))}
+      <h2 style={{ marginBottom: "1.5rem" }}>Start here</h2>
+      <div className="grid-2">
+        <Link href="/learn/read-azure-cli" className="card">
+          <span className="badge b-live">Lesson</span>
+          <h3>How to read any Azure CLI command</h3>
+          <p>Every <code>az</code> command follows one sentence pattern. Learn it once and you can read commands you have never seen.</p>
+          <span className="foot">Read the lesson</span>
+        </Link>
+        <Link href="/learn/cloud-migration" className="card">
+          <span className="badge b-live">Notes and quizzes</span>
+          <h3>Cloud migration</h3>
+          <p>Six modules on migration strategy, App Service and managed databases. Each has notes, a cheat sheet and a quiz.</p>
+          <span className="foot">Start module 1</span>
+        </Link>
+        <a href={az104.sample} className="card">
+          <span className="badge b-live">Sample chapter</span>
+          <h3>AZ-104 Field Guide, free sample</h3>
+          <p>22 pages from the book: the command grammar chapter and the first workplace lab.</p>
+          <span className="foot">Open the PDF on GitHub</span>
+        </a>
+        <a href={site.labsRepo} className="card">
+          <span className="badge b-live">Hands-on labs</span>
+          <h3>12 Azure labs and a capstone</h3>
+          <p>Workplace tickets with deploy, verify and cleanup scripts. Free for everyone, with or without the book.</p>
+          <span className="foot">Open the lab repo</span>
+        </a>
       </div>
+
+      <section className="section">
+        <h2 style={{ marginBottom: "1.5rem" }}>Coming soon</h2>
+        <div className="grid-3">
+          {soon.map(s => (
+            <div key={s.title} className="card">
+              <span className="badge b-soon">Coming soon</span>
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
