@@ -120,7 +120,7 @@ export default function Az104() {
           ))}
         </div>
         <p className="note" style={{ marginTop: "1.2rem" }}>
-          Prices are in US dollars and set by each store. Gumroad purchases have a 14-day refund.
+          Prices are set by each store. Etsy is in Canadian dollars, the others in US dollars. Gumroad purchases have a 14-day refund.
         </p>
       </section>
 

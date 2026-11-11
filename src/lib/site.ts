@@ -38,6 +38,13 @@ export const az104 = {
       href: "https://jeysingh.gumroad.com/l/az104-practice-pack",
     },
     {
+      name: "Complete bundle",
+      where: "Etsy",
+      price: "CA$39.99",
+      what: "Book, lab scripts and the Practice Pack, as an Etsy digital download",
+      href: "https://www.etsy.com/listing/4615104601/az-104-azure-administrator-study-guide",
+    },
+    {
       name: "Field Guide",
       where: "Leanpub",
       price: "from US$19",
