@@ -23,6 +23,8 @@ export const metadata: Metadata = {
     images: [{ url: "/og-site.jpg", width: 1200, height: 630, alt: "Jey Singh, author of the AZ-104 and Git / GitHub study guides" }],
   },
   twitter: { card: "summary_large_image" },
+  // Google Search Console ownership check (azureawscert@gmail.com).
+  verification: { google: "uf5Yy2YZ6fkCvkA2nyxlKvtRcMugLDJ4KQ63aEQU61E" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
