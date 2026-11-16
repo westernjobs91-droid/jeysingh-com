@@ -60,7 +60,7 @@ export default function Books() {
           <div className="card">
             <span className="badge b-soon">Coming soon</span>
             <h3>AZ-305: The Azure Solutions Architect Field Guide</h3>
-            <p>The next step after AZ-104: how to design Azure solutions and explain the trade-offs. In review now.</p>
+            <p>The next step after AZ-104: how to design Azure solutions and explain the trade-offs. In progress.</p>
           </div>
         </div>
         <p className="note" style={{ marginTop: "1.5rem" }}>

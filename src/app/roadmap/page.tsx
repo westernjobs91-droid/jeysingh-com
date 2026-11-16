@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const now = [
   { when: "Studying", title: "Finishing Cloud Development and Operations", text: "Final month at Algonquin College. The program ends in December 2026." },
   { when: "Studying", title: "Preparing for AZ-104", text: "Working through my own field guide, the practice exams and all 12 labs before I book the exam." },
-  { when: "Writing", title: "AZ-305 Field Guide", text: "The Solutions Architect guide is in review. It comes out when the labs and questions pass the same checks AZ-104 did." },
+  { when: "Writing", title: "AZ-305 Field Guide", text: "The Solutions Architect guide is in progress. It comes out when the labs and questions pass the same checks AZ-104 did." },
   { when: "Writing", title: "A Git and GitHub guide for job seekers", text: "What teams test, and what a recruiter looks for on a GitHub profile." },
   { when: "Building", title: "SnapBooks and Hirely", text: "Shipping updates to both products." },
   { when: "Next", title: "Cloud roles from December 2026", text: "Open to Azure administrator, cloud operations and DevOps roles once the program ends." },
