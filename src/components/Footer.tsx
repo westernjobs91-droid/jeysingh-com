@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
+import { site, gitBook } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -25,7 +25,9 @@ export default function Footer() {
           <h3>Books</h3>
           <ul>
             <li><Link href="/books/az-104">AZ-104 Field Guide</Link></li>
+            <li><Link href="/books/git">Git / GitHub Study Guide</Link></li>
             <li><a href={site.labsRepo}>AZ-104 labs on GitHub</a></li>
+            <li><a href={gitBook.labsRepo}>Git labs on GitHub</a></li>
           </ul>
         </div>
         <div>
@@ -37,8 +39,8 @@ export default function Footer() {
           </ul>
         </div>
         <p className="legal">
-          © 2026 Jey Singh. Independent publications. Not affiliated with or endorsed by Microsoft.
-          Microsoft and Azure are trademarks of the Microsoft group of companies.
+          © 2026 Jey Singh. Independent publications. Not affiliated with or endorsed by Microsoft or GitHub.
+          Microsoft and Azure are trademarks of the Microsoft group of companies. GitHub is a trademark of GitHub, Inc.
         </p>
       </div>
     </footer>

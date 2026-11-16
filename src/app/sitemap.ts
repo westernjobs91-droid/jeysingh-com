@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 
 const paths = [
-  "", "/books", "/books/az-104", "/portfolio", "/learn", "/learn/read-azure-cli",
+  "", "/books", "/books/az-104", "/books/git", "/portfolio", "/learn", "/learn/read-azure-cli",
   "/learn/cloud-migration", "/about", "/contact", "/roadmap",
 ];
 

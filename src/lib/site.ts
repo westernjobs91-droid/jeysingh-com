@@ -53,3 +53,52 @@ export const az104 = {
     },
   ],
 };
+
+export const gitBook = {
+  title: "Git / GitHub Study Guide",
+  subtitle: "Learn Git, prepare for GH-900, work on a team",
+  series: "Exam to Work",
+  edition: "2026 edition",
+  updated: "November 2026",
+  pages: 151,
+  sample: "/books/Git-GitHub-FREE-SAMPLE.pdf",
+  labsRepo: "https://github.com/azureawscert-a11y/git-github-labs",
+  stores: [
+    {
+      name: "Complete bundle",
+      where: "Gumroad",
+      price: "US$22",
+      what: "Book, lab files and the Practice Pack with two full practice exams",
+      href: "https://jeysingh.gumroad.com/l/git-github-complete-bundle",
+      primary: true,
+    },
+    {
+      name: "Study Guide and labs",
+      where: "Gumroad",
+      price: "US$15",
+      what: "The 151-page book and the lab files",
+      href: "https://jeysingh.gumroad.com/l/git-github-guide",
+    },
+    {
+      name: "Practice Pack",
+      where: "Gumroad",
+      price: "US$12",
+      what: "Two 60-question GH-900 practice exams, every answer explained",
+      href: "https://jeysingh.gumroad.com/l/git-github-practice-pack",
+    },
+    {
+      name: "Complete bundle",
+      where: "Etsy",
+      price: "CA$29.99",
+      what: "Book, lab files and the Practice Pack, as an Etsy digital download",
+      href: "https://www.etsy.com/listing/4618762822",
+    },
+    {
+      name: "Study Guide",
+      where: "Leanpub",
+      price: "from US$15",
+      what: "The 151-page book, with free updates from Leanpub",
+      href: "https://leanpub.com/git-github-guide",
+    },
+  ],
+};
