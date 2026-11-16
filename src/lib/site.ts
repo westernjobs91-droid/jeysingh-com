@@ -91,7 +91,7 @@ export const gitBook = {
       where: "Etsy",
       price: "CA$29.99",
       what: "Book, lab files and the Practice Pack, as an Etsy digital download",
-      href: "https://www.etsy.com/listing/4618762822",
+      href: "https://www.etsy.com/listing/4618762822/git-and-github-study-guide-pdf-gh-900",
     },
     {
       name: "Study Guide",
