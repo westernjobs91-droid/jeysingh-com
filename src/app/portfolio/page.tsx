@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/site";
+import { site, gitBook } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Portfolio",
-  description: "Products, repos and cloud projects by Jey Singh: the AZ-104 field labs, SnapBooks, Hirely and Azure work in progress.",
+  description: "Products, repos and cloud projects by Jey Singh: the AZ-104 and Git lab repos, two published study guides, SnapBooks, Hirely and Azure work in progress.",
   alternates: { canonical: "/portfolio" },
 };
 
@@ -19,6 +19,18 @@ const shipped = [
     desc: "A 264-page study guide I wrote, tested and published. It covers every AZ-104 domain in Azure CLI and PowerShell, with 156 original practice questions.",
     tags: ["Azure", "Technical writing", "PowerShell"],
     href: "/books/az-104", foot: "See the book",
+  },
+  {
+    title: "Git / GitHub Study Guide", kind: "Published book",
+    desc: "A 151-page guide for beginners and GH-900 candidates that I wrote, tested and published, with a separate Practice Pack of two full practice exams.",
+    tags: ["Git", "GitHub", "Technical writing"],
+    href: "/books/git", foot: "See the book",
+  },
+  {
+    title: "Git / GitHub labs", kind: "Public GitHub repo",
+    desc: "4 local Git drills with a checker that prints PASS or FAIL, and 4 GitHub labs written as work tickets. A GitHub Actions workflow tests every drill on Windows, macOS and Linux.",
+    tags: ["Git", "Bash", "GitHub Actions", "CI"],
+    href: gitBook.labsRepo, foot: "Open the repo",
   },
   {
     title: "SnapBooks", kind: "Live product",

@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 const path = [
   { when: "2026", title: "Cloud Development and Operations, Algonquin College", text: "Ontario College Graduate Certificate, finishing December 2026. Azure architecture, cloud migration, infrastructure as code, DevOps, serverless, security and cloud-native development." },
   { when: "2026", title: "Author, AZ-104: The Azure Administrator Field Guide", text: "Wrote and published a 264-page study guide with 12 tested labs, while preparing for the exam myself." },
+  { when: "2026", title: "Author, Git / GitHub Study Guide", text: "Wrote and published a 151-page guide for beginners and GH-900 candidates, with 9 hands-on labs tested on Windows, macOS and Linux." },
   { when: "2026", title: "Founder, SnapBooks and Hirely", text: "Built and launched two software products on my own: bookkeeping for self-employed Canadians, and a CRM for recruiters." },
   { when: "2023 to now", title: "Founder and Managing Director, Western Jobs", text: "A technical and industrial staffing agency in Mississauga. I screen engineering, IT and cloud candidates the way a hiring manager would." },
   { when: "2019 to 2023", title: "HR and IT Operations Specialist, Essex Employment", text: "Ran IT across five to six offices: workstations, software, security setup, websites, domains and CRM platforms, alongside recruitment." },

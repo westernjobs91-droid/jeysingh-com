@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { az104, site } from "@/lib/site";
+import { az104, gitBook, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Learn cloud and AI for free",
-  description: "Free Azure lessons, study notes with quizzes, a sample chapter and hands-on labs from Jey Singh.",
+  description: "Free Azure and Git lessons, study notes with quizzes, sample chapters and hands-on labs from Jey Singh.",
   alternates: { canonical: "/learn" },
 };
 
 const soon = [
   { title: "AZ-104 practice quiz", desc: "A short set of original questions for each exam domain, with explained answers." },
-  { title: "Git and GitHub for job seekers", desc: "The Git habits teams expect, and how to make your GitHub profile prove them." },
   { title: "Cloud computing foundations", desc: "Service models, deployment models and adoption strategy, in the same notes, cheat sheet and quiz format." },
   { title: "Cloud solutions architecture", desc: "Design patterns and trade-offs on Azure, written while I prepare for AZ-305." },
   { title: "Cloud-native development", desc: "Containers, APIs and serverless apps on Azure." },
@@ -49,6 +48,18 @@ export default function Learn() {
           <span className="badge b-live">Hands-on labs</span>
           <h3>12 Azure labs and a capstone</h3>
           <p>Workplace tickets with deploy, verify and cleanup scripts. Free for everyone, with or without the book.</p>
+          <span className="foot">Open the lab repo</span>
+        </a>
+        <a href={gitBook.sample} className="card">
+          <span className="badge b-live">Sample chapter</span>
+          <h3>Git / GitHub Study Guide, free sample</h3>
+          <p>18 pages from the book: Start Here, the drills page, the troubleshooting chapter and the exam map.</p>
+          <span className="foot">Download the PDF</span>
+        </a>
+        <a href={gitBook.labsRepo} className="card">
+          <span className="badge b-live">Hands-on labs</span>
+          <h3>Git drills and GitHub labs</h3>
+          <p>4 local drills with a checker that prints PASS or FAIL, and 4 GitHub labs written as work tickets. Free for everyone.</p>
           <span className="foot">Open the lab repo</span>
         </a>
       </div>

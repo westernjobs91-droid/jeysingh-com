@@ -3,6 +3,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -19,8 +20,9 @@ export const metadata: Metadata = {
     url: site.url,
     siteName: "Jey Singh",
     type: "website",
-    images: ["/books/az-104-og.jpg"],
+    images: [{ url: "/og-site.jpg", width: 1200, height: 630, alt: "Jey Singh, author of the AZ-104 and Git / GitHub study guides" }],
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -30,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main>{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

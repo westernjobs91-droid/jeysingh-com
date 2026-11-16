@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { gitBook, site } from "@/lib/site";
+import BookJsonLd from "@/components/BookJsonLd";
 
 export const metadata: Metadata = {
   title: "Git / GitHub Study Guide: Learn Git, Prepare for GH-900",
@@ -30,6 +31,16 @@ const parts = [
 export default function GitBook() {
   return (
     <div className="wrap">
+      <BookJsonLd
+        name="Git / GitHub Study Guide: Learn Git, Prepare for GH-900, Work on a Team"
+        description="A 151-page beginner's guide to Git and GitHub with 145 quiz questions, 4 local drills, 4 GitHub labs and the GH-900 exam covered."
+        path="/books/git"
+        image="/books/git-github-cover.jpg"
+        pages={gitBook.pages}
+        datePublished="2026-11-16"
+        about={["Git", "GitHub", "GitHub Foundations (GH-900)", "Version control"]}
+        stores={gitBook.stores}
+      />
       <div className="page-head">
         <div className="book" style={{ alignItems: "start" }}>
           <Image className="cover" src="/books/git-github-cover.jpg" alt="Cover of the Git / GitHub Study Guide" width={816} height={1056} priority />

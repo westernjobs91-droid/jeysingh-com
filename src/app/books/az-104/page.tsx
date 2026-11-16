@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { az104, site } from "@/lib/site";
+import BookJsonLd from "@/components/BookJsonLd";
 
 export const metadata: Metadata = {
   title: "AZ-104: The Azure Administrator Field Guide",
@@ -34,6 +35,16 @@ const chapters = [
 export default function Az104() {
   return (
     <div className="wrap">
+      <BookJsonLd
+        name="AZ-104: The Azure Administrator Field Guide"
+        description="A 264-page AZ-104 study guide for beginners: every command explained in Azure CLI and PowerShell, 12 tested workplace labs and 156 original practice questions."
+        path="/books/az-104"
+        image="/books/az-104-cover.jpg"
+        pages={az104.pages}
+        datePublished="2026-11"
+        about={["Microsoft Azure", "Azure Administrator (AZ-104)", "Azure CLI", "PowerShell"]}
+        stores={az104.stores}
+      />
       <div className="page-head">
         <div className="book" style={{ alignItems: "start" }}>
           <Image className="cover" src="/books/az-104-cover.jpg" alt="Cover of AZ-104: The Azure Administrator Field Guide" width={816} height={1056} priority />

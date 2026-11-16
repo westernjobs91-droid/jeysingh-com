@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Email Jey Singh or connect on LinkedIn about cloud roles, the AZ-104 Field Guide or a project.",
+  description: "Email Jey Singh or connect on LinkedIn about cloud roles, the AZ-104 Field Guide, the Git / GitHub Study Guide or a project.",
   alternates: { canonical: "/contact" },
 };
 
@@ -28,9 +28,9 @@ export default function Contact() {
           <p>The fastest way to reach me, and where I post about cloud careers.</p>
           <span className="foot">Open my profile</span>
         </a>
-        <a href={site.labsRepo} className="card">
+        <a href="https://github.com/azureawscert-a11y" className="card">
           <h3>GitHub</h3>
-          <p>The AZ-104 lab repo. Open an issue there if a lab script fails.</p>
+          <p>The AZ-104 and Git lab repos. Open an issue in either one if a lab fails.</p>
           <span className="foot">Open the repo</span>
         </a>
       </div>
