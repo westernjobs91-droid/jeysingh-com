@@ -9,3 +9,8 @@ updates:
     groups:
       minor-and-patch:
         update-types: ["minor", "patch"]
+    # Big version jumps can break the build. Skip them; test and apply
+    # them by hand. Security alerts still show in the Security tab.
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
