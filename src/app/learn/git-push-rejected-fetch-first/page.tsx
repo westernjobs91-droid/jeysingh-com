@@ -21,8 +21,9 @@ export default function Page() {
         "hint: the same ref.",
       ]} />
       <p>
-        Older Git versions, and pushes to a branch that has moved on, say
-        <code> non-fast-forward</code> instead of <code>fetch first</code>. Both mean the same thing.
+        If you already fetched their commits but have not merged them, Git says
+        <code> (non-fast-forward)</code> and &ldquo;the tip of your current branch is behind its
+        remote counterpart&rdquo; instead. The cause and the fix are the same.
       </p>
 
       <h2>What it means</h2>
