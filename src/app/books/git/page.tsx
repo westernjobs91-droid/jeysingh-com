@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { gitBook, site } from "@/lib/site";
 import BookJsonLd from "@/components/BookJsonLd";
+import BookGuides from "@/components/BookGuides";
 
 export const metadata: Metadata = {
   title: "Git / GitHub Study Guide: Learn Git, Prepare for GH-900",
@@ -130,6 +131,8 @@ export default function GitBook() {
           Prices are set by each store. Etsy is in Canadian dollars, the others in US dollars. Gumroad purchases have a 14-day refund.
         </p>
       </section>
+
+      <BookGuides book="git" />
 
       <section className="section prose" style={{ paddingTop: 0 }}>
         <h2>Good to know</h2>

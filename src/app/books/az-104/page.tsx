@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { az104, site } from "@/lib/site";
 import BookJsonLd from "@/components/BookJsonLd";
+import BookGuides from "@/components/BookGuides";
 
 export const metadata: Metadata = {
   title: "AZ-104: The Azure Administrator Field Guide",
@@ -134,6 +135,8 @@ export default function Az104() {
           Prices are set by each store. Etsy is in Canadian dollars, the others in US dollars. Gumroad purchases have a 14-day refund.
         </p>
       </section>
+
+      <BookGuides book="az104" />
 
       <section className="section prose" style={{ paddingTop: 0 }}>
         <h2>Good to know</h2>

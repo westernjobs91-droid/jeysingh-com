@@ -27,10 +27,24 @@ export const metadata: Metadata = {
   verification: { google: "uf5Yy2YZ6fkCvkA2nyxlKvtRcMugLDJ4KQ63aEQU61E" },
 };
 
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Jey Singh",
+  url: site.url,
+  image: `${site.url}/og-site.jpg`,
+  jobTitle: "Founder, Western Jobs",
+  description: "Cloud and AI builder, technical recruiter and author of the AZ-104 Field Guide and the Git / GitHub Study Guide.",
+  address: { "@type": "PostalAddress", addressRegion: "ON", addressCountry: "CA" },
+  sameAs: [site.linkedin, "https://github.com/azureawscert-a11y"],
+  knowsAbout: ["Microsoft Azure", "Git", "GitHub", "Cloud computing", "Technical recruiting"],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd).replace(/</g, "\\u003c") }} />
         <Nav />
         <main>{children}</main>
         <Footer />

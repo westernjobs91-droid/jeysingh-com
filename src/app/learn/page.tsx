@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { az104, gitBook, site } from "@/lib/site";
+import { articles } from "@/lib/articles";
 
 export const metadata: Metadata = {
   title: "Learn cloud and AI for free",
@@ -65,6 +66,20 @@ export default function Learn() {
       </div>
 
       <section className="section">
+        <h2 style={{ marginBottom: "1.5rem" }}>Guides</h2>
+        <div className="grid-2">
+          {articles.map(a => (
+            <Link key={a.slug} href={`/learn/${a.slug}`} className="card">
+              <span className="badge b-live">{a.topic}</span>
+              <h3>{a.title}</h3>
+              <p>{a.description}</p>
+              <span className="foot">Read it, {a.minutes} min</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
         <h2 style={{ marginBottom: "1.5rem" }}>Coming soon</h2>
         <div className="grid-3">
           {soon.map(s => (

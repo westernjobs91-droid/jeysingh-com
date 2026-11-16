@@ -204,3 +204,20 @@ a.card:hover { border-color: var(--purple); }
   html { scroll-behavior: auto; }
 }
 .prose code, .card code { background: #17172b; border: 1px solid var(--border); border-radius: 5px; padding: 0.05em 0.35em; font-size: 0.9em; }
+
+/* Articles */
+.article { max-width: 760px; }
+.article .byline { color: var(--muted); font-size: 0.95rem; margin-top: 0.9rem; }
+.prose h3 { margin: 1.8rem 0 0.7rem; }
+.prose ol { max-width: 68ch; padding-left: 1.3rem; list-style: decimal; margin-bottom: 1.1rem; }
+.prose ol li { margin-bottom: 0.45rem; }
+.prose .tbl { overflow-x: auto; margin: 0 0 1.4rem; }
+.prose table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+.prose th, .prose td { text-align: left; vertical-align: top; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); }
+.prose th { color: var(--text); font-weight: 600; background: var(--bg2); }
+.prose td code { white-space: nowrap; }
+.callout { border: 1px solid var(--border2); border-left: 4px solid var(--purple); background: var(--surface); border-radius: 10px; padding: 1rem 1.2rem; margin: 0 0 1.4rem; max-width: 68ch; }
+.callout.warn { border-left-color: var(--orange); }
+.callout p:last-child { margin-bottom: 0; }
+.related { margin-top: 3rem; }
+.related ul { list-style: none; padding: 0; }
