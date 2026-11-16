@@ -7,15 +7,15 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Jey Singh: cloud and AI builder, author of the AZ-104 Field Guide",
+    default: "Jey Singh: cloud and AI builder, author of the AZ-104 and Git / GitHub study guides",
     template: "%s | Jey Singh",
   },
   description:
-    "Jey Singh builds cloud and AI products, writes practical Azure guides, and shares free study notes and labs.",
+    "Jey Singh builds cloud and AI products, writes practical study guides for Azure and Git / GitHub, and shares free study notes and labs.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Jey Singh",
-    description: "Cloud and AI builder. Author of AZ-104: The Azure Administrator Field Guide.",
+    description: "Cloud and AI builder. Author of the AZ-104 Field Guide and the Git / GitHub Study Guide.",
     url: site.url,
     siteName: "Jey Singh",
     type: "website",
