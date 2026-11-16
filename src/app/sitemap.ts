@@ -7,5 +7,5 @@ const paths = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return paths.map(p => ({ url: `${site.url}${p}`, lastModified: new Date("2026-11-11") }));
+  return paths.map(p => ({ url: `${site.url}${p}`, lastModified: new Date("2026-11-16") }));
 }
