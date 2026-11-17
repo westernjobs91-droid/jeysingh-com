@@ -47,6 +47,13 @@ export const articles: ArticleMeta[] = [
       "A technical recruiter's checklist for junior developer and cloud GitHub profiles: pinned projects, READMEs, commit history, pull requests and secrets.",
     topic: "Careers", book: "git", published: "2026-11-16", updated: "2026-11-16", minutes: 5,
   },
+  {
+    slug: "git-permission-denied-publickey",
+    title: "Fix \"Permission denied (publickey)\" on GitHub",
+    description:
+      "Why Git says Permission denied (publickey), four safe checks to find the cause, and how to add an SSH key to GitHub or switch to HTTPS.",
+    topic: "Git", book: "git", published: "2026-11-17", updated: "2026-11-17", minutes: 6,
+  },
 ];
 
 export const findArticle = (slug: string) => articles.find(a => a.slug === slug)!;
