@@ -54,6 +54,13 @@ export const articles: ArticleMeta[] = [
       "Why Git says Permission denied (publickey), four safe checks to find the cause, and how to add an SSH key to GitHub or switch to HTTPS.",
     topic: "Git", book: "git", published: "2026-11-17", updated: "2026-11-17", minutes: 6,
   },
+  {
+    slug: "git-permission-denied-403",
+    title: "Fix \"Permission to OWNER/REPO.git denied\" (403) on GitHub",
+    description:
+      "Why git push says Permission to OWNER/REPO.git denied to USER with a 403, how to check which account Git used, and how to switch to the right one.",
+    topic: "Git", book: "git", published: "2026-11-24", updated: "2026-11-24", minutes: 6,
+  },
 ];
 
 export const findArticle = (slug: string) => articles.find(a => a.slug === slug)!;
