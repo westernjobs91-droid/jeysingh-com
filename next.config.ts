@@ -25,7 +25,11 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async headers() {
-    return [{ source: "/(.*)", headers: securityHeaders }];
+    return [
+      { source: "/(.*)", headers: securityHeaders },
+      // Keep the free sample PDF out of Google so searchers land on the book page.
+      { source: "/books/Git-GitHub-FREE-SAMPLE.pdf", headers: [{ key: "X-Robots-Tag", value: "noindex" }] },
+    ];
   },
   async redirects() {
     return [

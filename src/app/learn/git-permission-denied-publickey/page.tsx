@@ -104,6 +104,17 @@ export default function Page() {
         personal access token.
       </p>
 
+      <h2>git clone permission denied (publickey)</h2>
+      <p>
+        Cloning shows the same error when you copy the SSH address
+        (<code>git@github.com:you/repo.git</code>) on a computer that has no key on GitHub yet.
+        Two ways out:
+      </p>
+      <ul>
+        <li>Do the checks and the fix above, then clone again.</li>
+        <li>Clone with the HTTPS address instead: <code>git clone https://github.com/you/repo.git</code>.</li>
+      </ul>
+
       <h2>Related errors</h2>
       <p>
         If GitHub knows who you are but still says no, you get{" "}

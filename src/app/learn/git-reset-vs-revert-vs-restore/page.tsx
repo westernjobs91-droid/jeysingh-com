@@ -72,6 +72,39 @@ export default function Page() {
         new pull request doing the same thing.
       </p>
 
+      <h2>git revert vs git reset</h2>
+      <p>
+        Both undo a commit. The difference is what happens to history.{" "}
+        <code>git reset</code> deletes the commit from your branch, as if it never happened.{" "}
+        <code>git revert</code> keeps the commit and adds a new one that cancels it.
+      </p>
+      <div className="tbl"><table>
+        <thead><tr><th></th><th><code>git reset</code></th><th><code>git revert</code></th></tr></thead>
+        <tbody>
+          <tr><td>Old commit</td><td>Removed from the branch</td><td>Stays in history</td></tr>
+          <tr><td>New commit</td><td>None</td><td>Yes, the &ldquo;undo&rdquo; commit</td></tr>
+          <tr><td>Already pushed?</td><td>Needs a force push. Avoid</td><td>Push normally. Safe</td></tr>
+          <tr><td>Best for</td><td>Cleaning up local work</td><td>Rolling back shared work</td></tr>
+        </tbody>
+      </table></div>
+      <p>
+        Rule of thumb: not pushed yet, reset is fine. Already pushed, use revert.
+      </p>
+
+      <h2>&ldquo;git restore is not a git command&rdquo;</h2>
+      <Cmd lines={[
+        "git: 'restore' is not a git command. See 'git --help'.",
+      ]} />
+      <p>
+        <code>git restore</code> arrived in Git 2.23 (2019). If you see this, your Git is older.
+        Check with <code>git --version</code>, then update Git. Until then, the older commands do
+        the same job:
+      </p>
+      <Cmd lines={[
+        ["git checkout -- cart.js", "same as git restore cart.js"],
+        ["git reset HEAD cart.js", "same as git restore --staged cart.js"],
+      ]} />
+
       <h2>&ldquo;I think I lost it&rdquo;: git reflog</h2>
       <p>Git keeps a diary of everywhere your HEAD has been. A hard reset is usually not the end:</p>
       <Cmd lines={[

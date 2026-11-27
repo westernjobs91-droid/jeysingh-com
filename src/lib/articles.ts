@@ -14,17 +14,17 @@ export type ArticleMeta = {
 export const articles: ArticleMeta[] = [
   {
     slug: "git-push-rejected-fetch-first",
-    title: "Fix \"git push rejected (fetch first)\" without losing work",
+    title: "Fix \"! [rejected] main -> main (fetch first)\"",
     description:
-      "Why git push says rejected, fetch first or non-fast-forward, how to check what happened, and the safe fix. Never force push a shared branch.",
-    topic: "Git", book: "git", published: "2026-11-16", updated: "2026-11-16", minutes: 5,
+      "git push rejected? GitHub has commits you don't. See what changed, run git pull or git pull --rebase, then push. Keeps your work. Same fix for non-fast-forward.",
+    topic: "Git", book: "git", published: "2026-11-16", updated: "2026-11-27", minutes: 5,
   },
   {
     slug: "git-reset-vs-revert-vs-restore",
-    title: "git reset vs revert vs restore: which undo to use",
+    title: "git revert vs reset vs restore: which one to use",
     description:
-      "A plain-English guide to undoing anything in Git: restore for files, reset for local commits, revert for pushed ones, and reflog when you think it is gone.",
-    topic: "Git", book: "git", published: "2026-11-16", updated: "2026-11-16", minutes: 7,
+      "git restore undoes file changes, git reset moves local commits back, git revert safely undoes a pushed commit. Real commands, one table, and the reflog rescue.",
+    topic: "Git", book: "git", published: "2026-11-16", updated: "2026-11-27", minutes: 7,
   },
   {
     slug: "gh-900-study-plan",
@@ -49,10 +49,10 @@ export const articles: ArticleMeta[] = [
   },
   {
     slug: "git-permission-denied-publickey",
-    title: "Fix \"Permission denied (publickey)\" on GitHub",
+    title: "Fix \"git@github.com: Permission denied (publickey)\"",
     description:
-      "Why Git says Permission denied (publickey), four safe checks to find the cause, and how to add an SSH key to GitHub or switch to HTTPS.",
-    topic: "Git", book: "git", published: "2026-11-17", updated: "2026-11-17", minutes: 6,
+      "git clone or git push fails with Permission denied (publickey)? Four safe checks find the cause, then add your SSH key to GitHub or switch to HTTPS.",
+    topic: "Git", book: "git", published: "2026-11-17", updated: "2026-11-27", minutes: 6,
   },
   {
     slug: "git-permission-denied-403",
