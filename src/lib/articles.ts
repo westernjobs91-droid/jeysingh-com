@@ -41,6 +41,13 @@ export const articles: ArticleMeta[] = [
     topic: "AZ-104", book: "az104", published: "2026-11-16", updated: "2026-11-16", minutes: 5,
   },
   {
+    slug: "azure-storage-redundancy",
+    title: "Azure storage redundancy: LRS vs ZRS vs GRS vs GZRS",
+    description:
+      "LRS, ZRS, GRS, GZRS and the RA- options in plain English: where the copies live, what each survives, how to pick one, and the CLI to set or change it.",
+    topic: "AZ-104", book: "az104", published: "2026-11-27", updated: "2026-11-27", minutes: 7,
+  },
+  {
     slug: "what-recruiters-check-on-github",
     title: "What recruiters check on your GitHub profile (from a recruiter)",
     description:
