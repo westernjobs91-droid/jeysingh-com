@@ -93,7 +93,7 @@ export default function Page() {
       <h2>The catches people miss</h2>
       <ul>
         <li><strong>Archive tier:</strong> blob archive is not supported on ZRS, GZRS or RA-GZRS accounts. If you need archive, use LRS, GRS or RA-GRS.</li>
-        <li><strong>Premium accounts:</strong> premium (SSD) accounts only offer LRS or ZRS. No geo options.</li>
+        <li><strong>Premium accounts:</strong> premium block blob and SSD file share accounts offer LRS or ZRS. Premium page blobs are LRS only. Geo options need a standard general-purpose v2 account.</li>
         <li><strong>Azure Files:</strong> geo-redundancy is only for standard (HDD) file shares, and there is no read access to the second region. An RA-GRS account treats its file shares as plain GRS.</li>
         <li><strong>Redundancy is not backup.</strong> If someone deletes a blob or overwrites a file, every copy gets the delete. Use soft delete, versioning or Azure Backup for that.</li>
       </ul>
@@ -122,8 +122,10 @@ export default function Page() {
       ]} />
       <p>
         Adding or removing zones (for example LRS to ZRS) is different. Azure has to move your
-        data, so you request a <strong>conversion</strong> from the storage account&apos;s{" "}
-        <strong>Redundancy</strong> page in the portal, and it can take a while to finish.
+        data, so you start a <strong>conversion</strong> from the storage account&apos;s{" "}
+        <strong>Redundancy</strong> page in the portal (or with PowerShell or the CLI). It usually
+        starts within 72 hours and can take longer to finish. If you also want to add or drop geo,
+        that is a separate second step.
       </p>
       <p>On a geo account, see how far behind the second region is:</p>
       <Cmd lines={[
