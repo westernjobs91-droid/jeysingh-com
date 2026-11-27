@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Article, { articleMetadata } from "@/components/Article";
-import Cmd from "@/components/Cmd";
+import Explain from "@/components/Explain";
 
 const slug = "azure-storage-redundancy";
 export const metadata = articleMetadata(slug);
@@ -99,27 +99,91 @@ export default function Page() {
       </ul>
 
       <h2>Set it with the Azure CLI</h2>
-      <p>The redundancy option is the <code>--sku</code> of the storage account:</p>
-      <Cmd lines={[
-        ["az storage account create \\", "new account"],
-        "  --name stjeydemo01 \\",
-        "  --resource-group rg-storage-demo \\",
-        "  --location canadacentral \\",
-        "  --sku Standard_GZRS",
-      ]} />
       <p>
-        The values are <code>Standard_LRS</code>, <code>Standard_ZRS</code>, <code>Standard_GRS</code>,{" "}
-        <code>Standard_RAGRS</code>, <code>Standard_GZRS</code> and <code>Standard_RAGZRS</code>. Premium
-        accounts use <code>Premium_LRS</code> or <code>Premium_ZRS</code>.
+        You can do all of this by clicking in the portal. The commands below do the same thing,
+        and every piece is explained so you can read them, not just copy them. Run them in{" "}
+        <strong>Azure Cloud Shell</strong> (the <code>&gt;_</code> button at the top of the Azure
+        portal), where you are already signed in.
       </p>
-      <p>Check what an account uses now (this changes nothing):</p>
-      <Cmd lines={[
-        ["az storage account show -n stjeydemo01 -g rg-storage-demo --query sku.name -o tsv", "e.g. Standard_GZRS"],
-      ]} />
+
+      <h3>Create a storage account and choose its redundancy</h3>
+      <Explain
+        lines={[
+          "az storage account create \\",
+          "  --name stjeydemo01 \\",
+          "  --resource-group rg-storage-demo \\",
+          "  --location canadacentral \\",
+          "  --sku Standard_GZRS",
+        ]}
+        parts={[
+          { code: "az", kind: "tool", says: "The Azure CLI. Every Azure command starts with it." },
+          { code: "storage account", kind: "what", says: "What you are working on: a storage account, the container that holds your blobs, files, queues and tables." },
+          { code: "create", kind: "act", says: "The action: make a new one." },
+          { code: "--name", kind: "flag", says: "Asks: what do you want to call it? The name becomes part of a web address, so it must be 3 to 24 lowercase letters and numbers, and unique across all of Azure." },
+          { code: "stjeydemo01", kind: "val", says: "Your answer. \"st\" is a common short form for storage account, so anyone reading it knows what it is." },
+          { code: "--resource-group", kind: "flag", says: "Asks: which folder does it go in? A resource group holds related resources so you can manage and delete them together. It must already exist." },
+          { code: "rg-storage-demo", kind: "val", says: "Your answer: the resource group name." },
+          { code: "--location", kind: "flag", says: "Asks: which region? This is your primary region, where your main copies live." },
+          { code: "canadacentral", kind: "val", says: "Your answer: Canada Central (Toronto). For GZRS, the second copy goes to its paired region, Canada East." },
+          { code: "--sku", kind: "flag", says: "Asks: which tier and redundancy? SKU is short for stock keeping unit, Azure's word for \"which version of the product\"." },
+          { code: "Standard_GZRS", kind: "val", says: "Your answer, in two halves. Standard means regular (HDD) storage, not Premium (SSD). GZRS means three copies across zones here, plus copies in the paired region." },
+          { code: "\\", kind: "other", says: "Not part of Azure. It tells the terminal \"this command continues on the next line\", so a long command stays readable. You can also type it all on one line without them." },
+        ]}
+        say="Azure, in storage accounts: create stjeydemo01 in rg-storage-demo, in Canada Central, as standard storage with zone and geo copies."
+      />
+      <p>The redundancy choices for <code>--sku</code>:</p>
+      <div className="tbl"><table>
+        <thead><tr><th>Value</th><th>Means</th></tr></thead>
+        <tbody>
+          <tr><td><code>Standard_LRS</code></td><td>Standard storage, 3 copies in one datacenter</td></tr>
+          <tr><td><code>Standard_ZRS</code></td><td>Standard storage, 3 copies across zones</td></tr>
+          <tr><td><code>Standard_GRS</code></td><td>LRS here plus LRS in the paired region</td></tr>
+          <tr><td><code>Standard_RAGRS</code></td><td>GRS, and you can read the second region any time</td></tr>
+          <tr><td><code>Standard_GZRS</code></td><td>ZRS here plus LRS in the paired region</td></tr>
+          <tr><td><code>Standard_RAGZRS</code></td><td>GZRS, and you can read the second region any time</td></tr>
+          <tr><td><code>Premium_LRS</code>, <code>Premium_ZRS</code></td><td>Premium (SSD) storage. No geo options</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Check which redundancy an account uses</h3>
+      <p>This only reads. It changes nothing, so it is safe to run on anything.</p>
+      <Explain
+        lines={[
+          "az storage account show -n stjeydemo01 -g rg-storage-demo --query sku.name -o tsv",
+          "Standard_GZRS",
+        ]}
+        parts={[
+          { code: "az storage account", kind: "what", says: "Same as before: the Azure CLI, working on storage accounts." },
+          { code: "show", kind: "act", says: "The action: show me the details of one account. Read only." },
+          { code: "-n", kind: "flag", says: "Short form of --name. Asks: which account?" },
+          { code: "stjeydemo01", kind: "val", says: "Your answer." },
+          { code: "-g", kind: "flag", says: "Short form of --resource-group. Asks: in which resource group?" },
+          { code: "rg-storage-demo", kind: "val", says: "Your answer." },
+          { code: "--query", kind: "flag", says: "Asks: which part of the answer do you want? Without it you get a long page of JSON (Azure's answer format) about the account." },
+          { code: "sku.name", kind: "val", says: "Your answer: inside the sku section, give me only name. The dot means \"go inside\"." },
+          { code: "-o", kind: "flag", says: "Short form of --output. Asks: in what format?" },
+          { code: "tsv", kind: "val", says: "Plain text with no quotes or brackets. Good for reading and for scripts." },
+          { code: "Standard_GZRS", kind: "other", says: "What Azure prints back: this account uses GZRS." },
+        ]}
+        say="Azure, show me stjeydemo01 in rg-storage-demo, but only its SKU name, as plain text."
+      />
+
+      <h3>Change the redundancy (LRS, GRS and RA-GRS)</h3>
       <p>Moving between LRS, GRS and RA-GRS is a simple update:</p>
-      <Cmd lines={[
-        ["az storage account update -n stjeydemo01 -g rg-storage-demo --sku Standard_RAGRS", "LRS to RA-GRS"],
-      ]} />
+      <Explain
+        lines={[
+          "az storage account update -n stjeydemo01 -g rg-storage-demo --sku Standard_RAGRS",
+        ]}
+        parts={[
+          { code: "az storage account", kind: "what", says: "The Azure CLI, working on storage accounts." },
+          { code: "update", kind: "act", says: "The action: change a setting on an account that already exists." },
+          { code: "-n stjeydemo01", kind: "flag", says: "Which account (short for --name)." },
+          { code: "-g rg-storage-demo", kind: "flag", says: "In which resource group (short for --resource-group)." },
+          { code: "--sku", kind: "flag", says: "Asks: which redundancy do you want now?" },
+          { code: "Standard_RAGRS", kind: "val", says: "Your answer: geo copies, readable from the second region at any time." },
+        ]}
+        say="Azure, update stjeydemo01 so it keeps geo copies I can read."
+      />
       <p>
         Adding or removing zones (for example LRS to ZRS) is different. Azure has to move your
         data, so you start a <strong>conversion</strong> from the storage account&apos;s{" "}
@@ -127,11 +191,30 @@ export default function Page() {
         starts within 72 hours and can take longer to finish. If you also want to add or drop geo,
         that is a separate second step.
       </p>
-      <p>On a geo account, see how far behind the second region is:</p>
-      <Cmd lines={[
-        ["az storage account show -n stjeydemo01 -g rg-storage-demo \\", ""],
-        ["  --expand geoReplicationStats --query geoReplicationStats.lastSyncTime", "changes written before this time are safe in region 2"],
-      ]} />
+
+      <h3>See how far behind the second region is</h3>
+      <p>On a GRS or GZRS account, the second region gets changes a little later. This tells you how much later.</p>
+      <Explain
+        lines={[
+          "az storage account show -n stjeydemo01 -g rg-storage-demo \\",
+          "  --expand geoReplicationStats \\",
+          "  --query geoReplicationStats.lastSyncTime -o tsv",
+        ]}
+        parts={[
+          { code: "az storage account show", kind: "act", says: "Show the details of one storage account. Read only." },
+          { code: "-n … -g …", kind: "flag", says: "Which account, in which resource group." },
+          { code: "--expand", kind: "flag", says: "Asks: any extra details to include? Some details are left out unless you ask, because they take longer to fetch." },
+          { code: "geoReplicationStats", kind: "val", says: "Your answer: include the stats about copying to the second region." },
+          { code: "--query", kind: "flag", says: "Asks: which part of the answer do you want?" },
+          { code: "geoReplicationStats.lastSyncTime", kind: "val", says: "Only the Last Sync Time: the moment up to which every change is safely in the second region." },
+          { code: "-o tsv", kind: "flag", says: "Print it as plain text." },
+        ]}
+        say="Azure, show me up to what time stjeydemo01's data is safely copied to the second region."
+      />
+      <p>
+        Anything written before that time is safe in the second region. Anything written after it
+        could be lost if the main region went down right now.
+      </p>
 
       <h2>What AZ-104 asks</h2>
       <p>

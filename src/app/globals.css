@@ -121,6 +121,22 @@ code, .mono { font-family: var(--mono); }
 .term-tabs button { font: 500 0.8rem var(--mono); color: var(--muted); background: none; border: 1px solid var(--border); border-radius: 7px; padding: 0.3rem 0.6rem; cursor: pointer; }
 .term-tabs button[aria-pressed="true"] { color: var(--text); border-color: var(--purple); background: #a78bfa1a; }
 
+/* command explained piece by piece */
+.explain { margin: 0 0 1.8rem; }
+.explain .cmd { margin-bottom: 0.9rem; }
+.explain-head { font: 600 0.78rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.5rem; }
+.explain dl { margin: 0 0 1rem; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.explain dl > div { display: grid; grid-template-columns: minmax(8rem, max-content) minmax(0, 1fr); gap: 1rem; align-items: baseline; padding: 0.6rem 0.9rem; border-top: 1px solid var(--border); }
+.explain dl > div:first-child { border-top: 0; }
+.explain dt code { font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 6px; color: #0b0820; white-space: nowrap; }
+.explain dd { margin: 0; color: var(--body); font-size: 0.95rem; line-height: 1.55; }
+.explain .t-tool dt code { background: #cbd5e1; }
+.explain .t-what dt code { background: var(--purple); }
+.explain .t-act dt code { background: var(--orange); }
+.explain .t-flag dt code { background: var(--blue); }
+.explain .t-val dt code, .explain .t-other dt code { background: #1c1c33; color: var(--text); border: 1px solid var(--border2); }
+@media (max-width: 560px) { .explain dl > div { grid-template-columns: minmax(0, 1fr); gap: 0.3rem; } }
+
 /* fact strip */
 .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--border); gap: 1px; }
 .facts div { background: var(--bg2); padding: 1.2rem 1.25rem; }
